@@ -172,6 +172,7 @@ public class ClothingStoreApp {
         return null;
     }
 
+
     private static int readInt(String msg) {
         while (true) {
             System.out.print(msg);
@@ -199,4 +200,3 @@ public class ClothingStoreApp {
         return sc.nextLine().trim();
     }
 }
-1
