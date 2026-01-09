@@ -11,13 +11,13 @@ public class ClothingStoreApp {
             int choice = readInt("Enter your choice: ");
 
             switch (choice) {
-                case 1 -> addGeneralItem();   // add parent object
-                case 2 -> addShirt();         // add child #1
-                case 3 -> addPants();         // add child #2
-                case 4 -> viewAllItems();     // polymorphic view
-                case 5 -> makeAllWork();      // polymorphism demo (call overridden action)
-                case 6 -> viewShirtsOnly();   // instanceof + downcasting
-                case 7 -> viewPantsOnly();    // instanceof + downcasting
+                case 1 -> addGeneralItem();
+                case 2 -> addShirt();
+                case 3 -> addPants();
+                case 4 -> viewAllItems();
+                case 5 -> makeAllWork();
+                case 6 -> viewShirtsOnly();
+                case 7 -> viewPantsOnly();
                 case 8 -> sellById();
                 case 9 -> discountById();
                 case 0 -> {
@@ -44,7 +44,6 @@ public class ClothingStoreApp {
         System.out.println("=======================================");
     }
 
-    // ---------- Add items ----------
     private static void addGeneralItem() {
         int id = readInt("Item ID: ");
         String brand = readString("Brand: ");
@@ -87,7 +86,6 @@ public class ClothingStoreApp {
         System.out.println("Added: " + pants);
     }
 
-    // ---------- Views / Polymorphism ----------
     private static void viewAllItems() {
         if (inventory.isEmpty()) {
             System.out.println("Inventory is empty.");
@@ -110,7 +108,6 @@ public class ClothingStoreApp {
         }
     }
 
-    // ---------- instanceof + downcasting ----------
     private static void viewShirtsOnly() {
         System.out.println("\n--- SHIRTS ONLY ---");
         boolean found = false;
@@ -118,9 +115,8 @@ public class ClothingStoreApp {
         for (ClothingItem item : inventory) {
             if (item instanceof Shirt) {
                 found = true;
-                Shirt s = (Shirt) item;  // downcasting
+                Shirt s = (Shirt) item;
                 System.out.println(s);
-                // call unique methods
                 s.iron();
                 s.fold();
             }
@@ -136,9 +132,8 @@ public class ClothingStoreApp {
         for (ClothingItem item : inventory) {
             if (item instanceof Pants) {
                 found = true;
-                Pants p = (Pants) item; // downcasting
+                Pants p = (Pants) item;
                 System.out.println(p);
-                // call unique methods
                 System.out.println("Slim fit? " + p.isSlimFit());
             }
         }
@@ -146,7 +141,6 @@ public class ClothingStoreApp {
         if (!found) System.out.println("No pants found.");
     }
 
-    // ---------- Extra menu actions ----------
     private static void sellById() {
         int id = readInt("Enter item ID to sell 1 unit: ");
         ClothingItem item = findById(id);
@@ -173,12 +167,11 @@ public class ClothingStoreApp {
 
     private static ClothingItem findById(int id) {
         for (ClothingItem item : inventory) {
-            if (item.itemId == id) return item; // protected field accessible in same package
+            if (item.itemId == id) return item;
         }
         return null;
     }
 
-    // ---------- Safe input ----------
     private static int readInt(String msg) {
         while (true) {
             System.out.print(msg);

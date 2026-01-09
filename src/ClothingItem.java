@@ -1,12 +1,10 @@
 public class ClothingItem {
-    // minimum 4 protected fields
     protected int itemId;
     protected String brand;
     protected String size;
     protected double price;
     protected int stock;
 
-    // Parent: parameterized constructor
     public ClothingItem(int itemId, String brand, String size, double price, int stock) {
         this.itemId = itemId;
         this.brand = brand;
@@ -15,12 +13,11 @@ public class ClothingItem {
         this.stock = stock;
     }
 
-    // Parent methods (minimum 3, includes action/work)
     public String getCategory() {
         return "General Clothing";
     }
 
-    public void workAction() { // action/work method
+    public void workAction() {
         System.out.println("Item #" + itemId + " is displayed on the rack.");
     }
 

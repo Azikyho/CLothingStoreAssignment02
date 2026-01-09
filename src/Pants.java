@@ -1,16 +1,14 @@
 public class Pants extends ClothingItem {
-    // child adds 1-2 fields
-    private String fitType;   // slim/regular/loose
+    private String fitType;
     private int lengthCm;
 
     public Pants(int itemId, String brand, String size, double price, int stock,
                  String fitType, int lengthCm) {
-        super(itemId, brand, size, price, stock); // FIRST line
+        super(itemId, brand, size, price, stock);
         this.fitType = fitType;
         this.lengthCm = lengthCm;
     }
 
-    // Override минимум 2 методов
     @Override
     public String getCategory() {
         return "Pants";
@@ -21,7 +19,6 @@ public class Pants extends ClothingItem {
         System.out.println("Pants #" + itemId + " are placed on a shelf (fit: " + fitType + ").");
     }
 
-    // Unique methods (2+)
     public void hem(int newLengthCm) {
         if (newLengthCm > 0) {
             lengthCm = newLengthCm;
