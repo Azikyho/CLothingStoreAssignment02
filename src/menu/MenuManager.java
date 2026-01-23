@@ -1,3 +1,10 @@
+package menu;
+
+import model.ClothingItem;
+import model.Shirt;
+import model.Pants;
+import exception.InvalidPriceException;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -45,31 +52,39 @@ public class MenuManager implements Menu {
     }
 
     private void addGeneralItem() {
-        int id = readInt("Item ID: ");
-        String brand = readString("Brand: ");
-        String size = readString("Size (S/M/L/XL): ");
-        double price = readDouble("Price: ");
-        int stock = readInt("Stock: ");
+        try {
+            int id = readInt("Item ID: ");
+            String brand = readString("Brand: ");
+            String size = readString("Size (S/M/L/XL): ");
+            double price = readDouble("Price: ");
+            int stock = readInt("Stock: ");
 
-        System.out.println("Choose item type (1 for Shirt, 2 for Pants): ");
-        int itemType = readInt("Enter 1 or 2: ");
+            if (price <= 0) {
+                throw new InvalidPriceException("Price must be greater than zero.");
+            }
 
-        ClothingItem item = null;
-        if (itemType == 1) {
-            String sleeveType = readString("Sleeve Type (short/long): ");
-            String fabric = readString("Fabric (cotton/polyester): ");
-            item = new Shirt(id, brand, size, price, stock, sleeveType, fabric);
-        } else if (itemType == 2) {
-            String fitType = readString("Fit Type (slim/regular/loose): ");
-            int lengthCm = readInt("Length (cm): ");
-            item = new Pants(id, brand, size, price, stock, fitType, lengthCm);
-        }
+            ClothingItem item = null;
+            System.out.println("Choose item type (1 for Shirt, 2 for Pants): ");
+            int itemType = readInt("Enter 1 or 2: ");
 
-        if (item != null) {
-            inventory.add(item);
-            System.out.println("Added: " + item);
-        } else {
-            System.out.println("Invalid option. Item not added.");
+            if (itemType == 1) {
+                String sleeveType = readString("Sleeve Type (short/long): ");
+                String fabric = readString("Fabric (cotton/polyester): ");
+                item = new Shirt(id, brand, size, price, stock, sleeveType, fabric);
+            } else if (itemType == 2) {
+                String fitType = readString("Fit Type (slim/regular/loose): ");
+                int lengthCm = readInt("Length (cm): ");
+                item = new Pants(id, brand, size, price, stock, fitType, lengthCm);
+            }
+
+            if (item != null) {
+                inventory.add(item);
+                System.out.println("Added: " + item);
+            } else {
+                System.out.println("Invalid option. Item not added.");
+            }
+        } catch (InvalidPriceException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -149,7 +164,7 @@ public class MenuManager implements Menu {
                 found = true;
                 Pants p = (Pants) item;
                 System.out.println(p);
-                p.hem(p.lengthCm + 5);
+                p.hem(p.getLengthCm() + 5);
             }
         }
 
@@ -182,7 +197,7 @@ public class MenuManager implements Menu {
 
     private ClothingItem findById(int id) {
         for (ClothingItem item : inventory) {
-            if (item.itemId == id) return item;
+            if (item.getItemId() == id) return item;
         }
         return null;
     }

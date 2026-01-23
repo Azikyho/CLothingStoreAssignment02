@@ -1,3 +1,5 @@
+package model;
+
 public class Shirt extends ClothingItem {
     private String sleeveType;
     private String fabric;

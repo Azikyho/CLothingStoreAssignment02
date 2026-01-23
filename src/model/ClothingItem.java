@@ -1,3 +1,5 @@
+package model;
+
 public abstract class ClothingItem {
     protected int itemId;
     protected String brand;
@@ -5,13 +7,18 @@ public abstract class ClothingItem {
     protected double price;
     protected int stock;
 
-    public ClothingItem(int itemID, String brand, String size, double price, int stock) {
+    public ClothingItem(int itemId, String brand, String size, double price, int stock) {
         this.itemId = itemId;
         this.brand = brand;
         this.size = size;
         this.price = price;
         this.stock = stock;
     }
+
+    public int getItemId() {
+        return itemId;
+    }
+
     public abstract String getCategory();
 
     public void workAction() {

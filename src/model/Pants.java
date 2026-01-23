@@ -1,3 +1,5 @@
+package model;
+
 public class Pants extends ClothingItem {
     private String fitType;
     protected int lengthCm;
@@ -15,18 +17,26 @@ public class Pants extends ClothingItem {
 
     @Override
     public void workAction() {
-        System.out.println("Pants #" + itemId + " are placed on a shelf (fit: " + fitType + ").");
+        System.out.println("Pants #" + getItemId() + " are placed on a shelf (fit: " + fitType + ").");
     }
 
     public void hem(int newLengthCm) {
         if (newLengthCm > 0) {
-            lengthCm = newLengthCm;  // access to the protected field
-            System.out.println("Pants #" + itemId + " hemmed to " + lengthCm + " cm.");
+            setLengthCm(newLengthCm);
+            System.out.println("Pants #" + getItemId() + " hemmed to " + getLengthCm() + " cm.");
         }
     }
 
     public boolean isSlimFit() {
         return fitType != null && fitType.equalsIgnoreCase("slim");
+    }
+
+    public int getLengthCm() {
+        return lengthCm;
+    }
+
+    public void setLengthCm(int lengthCm) {
+        this.lengthCm = lengthCm;
     }
 
     @Override
