@@ -1,6 +1,6 @@
 public class Pants extends ClothingItem {
     private String fitType;
-    private int lengthCm;
+    protected int lengthCm;
 
     public Pants(int itemId, String brand, String size, double price, int stock, String fitType, int lengthCm) {
         super(itemId, brand, size, price, stock);
@@ -20,7 +20,7 @@ public class Pants extends ClothingItem {
 
     public void hem(int newLengthCm) {
         if (newLengthCm > 0) {
-            lengthCm = newLengthCm;
+            lengthCm = newLengthCm;  // access to the protected field
             System.out.println("Pants #" + itemId + " hemmed to " + lengthCm + " cm.");
         }
     }
