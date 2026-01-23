@@ -1,4 +1,4 @@
-public class ClothingItem {
+public abstract class ClothingItem {
     protected int itemId;
     protected String brand;
     protected String size;
@@ -13,9 +13,7 @@ public class ClothingItem {
         this.stock = stock;
     }
 
-    public String getCategory() {
-        return "General Clothing";
-    }
+    public abstract String getCategory();
 
     public void workAction() {
         System.out.println("Item #" + itemId + " is displayed on the rack.");

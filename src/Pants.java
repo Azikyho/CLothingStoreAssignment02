@@ -2,8 +2,7 @@ public class Pants extends ClothingItem {
     private String fitType;
     private int lengthCm;
 
-    public Pants(int itemId, String brand, String size, double price, int stock,
-                 String fitType, int lengthCm) {
+    public Pants(int itemId, String brand, String size, double price, int stock, String fitType, int lengthCm) {
         super(itemId, brand, size, price, stock);
         this.fitType = fitType;
         this.lengthCm = lengthCm;
